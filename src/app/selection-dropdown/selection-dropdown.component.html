@@ -1,0 +1,14 @@
+<mat-form-field appearance="outline">
+  <mat-label>{{ labelName }}</mat-label>
+  <mat-select [formControl]="stateCtrl" [required]="isRequired">
+    <mat-option
+      *ngFor="let selectionOption of selectionOptions"
+      [value]="selectionOption"
+    >
+      {{ selectionOption }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="stateCtrl.hasError('required')">{{
+    errorMessage
+  }}</mat-error>
+</mat-form-field>

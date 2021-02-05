@@ -1,0 +1,41 @@
+<div>
+  <app-selection-dropdown
+    labelName="Start Station"
+    [selectionOptions]="selection"
+    isStartStation="true"
+    [stateCtrl]="startStationCtrl"
+    errorMessage="Please Select a Station"
+    isRequired="true"
+  ></app-selection-dropdown>
+  <app-selection-dropdown
+    labelName="End Station"
+    [selectionOptions]="selection"
+    isStartStation="false"
+    [stateCtrl]="endStationCtrl"
+    errorMessage="Please Select a Station"
+    isRequired="true"
+  ></app-selection-dropdown>
+</div>
+
+<div>
+  <app-selection-dropdown
+    labelName="Start Time"
+    [selectionOptions]="selection"
+    isStartStation=""
+    [stateCtrl]="startTimeCtrl"
+  ></app-selection-dropdown>
+
+  <app-selection-dropdown
+    labelName="End Time"
+    [selectionOptions]="selection"
+    isStartStation="true"
+    [stateCtrl]="endTimieCtrl"
+  ></app-selection-dropdown>
+</div>
+<div>
+  <app-date-pick></app-date-pick>
+</div>
+<div>
+  <app-clear-button></app-clear-button>
+  <app-search-button></app-search-button>
+</div>
