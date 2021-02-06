@@ -1,44 +1,55 @@
-<div>
-  <app-selection-dropdown
-    labelName="Start Station"
-    [selectionOptions]="stationsData"
-    isStartStation="true"
-    [stateCtrl]="startStationCtrl"
-    errorMessage="Please Select a Station"
-    isRequired="true"
-  ></app-selection-dropdown>
-  <app-selection-dropdown
-    labelName="End Station"
-    [selectionOptions]="timeData"
-    isStartStation="false"
-    [stateCtrl]="endStationCtrl"
-    errorMessage="Please Select a Station"
-    isRequired="true"
-  ></app-selection-dropdown>
+<div class="center" *ngIf="!stationsService.isLoading; else loading">
+  <div>
+    <app-selection-dropdown
+      labelName="Start Station"
+      [selectionOptions]="stationsData"
+      isStartStation="true"
+      [stateCtrl]="startStationCtrl"
+      [errorMessage]="errorMessage"
+      isRequired="true"
+    ></app-selection-dropdown>
+    <app-selection-dropdown
+      labelName="End Station"
+      [selectionOptions]="stationsData"
+      isStartStation="false"
+      [stateCtrl]="endStationCtrl"
+      [errorMessage]="errorMessage"
+      isRequired="true"
+    ></app-selection-dropdown>
+  </div>
+
+  <div>
+    <app-selection-dropdown
+      labelName="Start Time"
+      [selectionOptions]="timeData"
+      isStartStation=""
+      [stateCtrl]="startTimeCtrl"
+    ></app-selection-dropdown>
+
+    <app-selection-dropdown
+      labelName="End Time"
+      [selectionOptions]="timeData"
+      isStartStation="true"
+      [stateCtrl]="endTimieCtrl"
+    ></app-selection-dropdown>
+  </div>
+  <div>
+    <app-date-pick [stateCtrl]="searchDateCtrl"></app-date-pick>
+  </div>
+  <div>
+    <app-clear-button (clearSchedule)="clearSchedule()"></app-clear-button>
+    <app-search-button (searchAction)="searchTrains()"></app-search-button>
+  </div>
+  <div *ngIf="scheduleService.hasRequestedForSearch">
+    <app-schedule-table
+      [columnsToDisplay]="trainSchedule.headers"
+      [dataSource]="trainSchedule.schedules"
+    ></app-schedule-table>
+  </div>
 </div>
 
-<div>
-  <app-selection-dropdown
-    labelName="Start Time"
-    [selectionOptions]="selection"
-    isStartStation=""
-    [stateCtrl]="startTimeCtrl"
-  ></app-selection-dropdown>
-
-  <app-selection-dropdown
-    labelName="End Time"
-    [selectionOptions]="selection"
-    isStartStation="true"
-    [stateCtrl]="endTimieCtrl"
-  ></app-selection-dropdown>
-</div>
-<div>
-  <app-date-pick></app-date-pick>
-</div>
-<div>
-  <app-clear-button></app-clear-button>
-  <app-search-button></app-search-button>
-</div>
-<div>
-  <app-schedule-table></app-schedule-table>
-</div>
+<ng-template #loading>
+  <div class="center">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+</ng-template>

@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ScheduleService } from './services/schedule.service';
 import { StationsService } from './services/stations.service';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { StationsService } from './services/stations.service';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [ScheduleService, StationsService],
+  providers: [ScheduleService, StationsService, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

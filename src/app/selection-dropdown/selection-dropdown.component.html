@@ -3,12 +3,13 @@
   <mat-select [formControl]="stateCtrl" [required]="isRequired">
     <mat-option
       *ngFor="let selectionOption of selectionOptions"
-      [value]="selectionOption"
+      [value]="selectionOption.id"
     >
-      {{ selectionOption }}
+      {{ selectionOption.value }}
     </mat-option>
   </mat-select>
-  <mat-error *ngIf="stateCtrl.hasError('required')">{{
-    errorMessage
-  }}</mat-error>
+  <mat-error
+    *ngIf="stateCtrl.hasError('required') || stateCtrl.hasError('notUnique')"
+    >{{ errorMessage }}</mat-error
+  >
 </mat-form-field>

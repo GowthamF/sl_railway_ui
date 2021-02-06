@@ -1,11 +1,11 @@
 export interface Stations {
-  stationId: Number;
-  stationName: String;
+  id: Number;
+  value: String;
 }
 
 export interface Times {
-  timeId: String;
-  timeValue: String;
+  id: String;
+  value: String;
 }
 
 export interface StationAndTime {

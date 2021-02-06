@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {
   animate,
   state,
@@ -13,7 +13,7 @@ import {
   styleUrls: ['./schedule-table.component.css'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '0px', minHeight: '0' })),
       state('expanded', style({ height: '*' })),
       transition(
         'expanded <=> collapsed',
@@ -23,8 +23,10 @@ import {
   ],
 })
 export class ScheduleTableComponent implements OnInit {
-  dataSource = [];
-  columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
+  @Input()
+  dataSource: [];
+  @Input()
+  columnsToDisplay: String[];
   expandedElement: null;
   constructor() {}
 
