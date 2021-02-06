@@ -1,7 +1,7 @@
 <div>
   <app-selection-dropdown
     labelName="Start Station"
-    [selectionOptions]="selection"
+    [selectionOptions]="stationsData"
     isStartStation="true"
     [stateCtrl]="startStationCtrl"
     errorMessage="Please Select a Station"
@@ -9,7 +9,7 @@
   ></app-selection-dropdown>
   <app-selection-dropdown
     labelName="End Station"
-    [selectionOptions]="selection"
+    [selectionOptions]="timeData"
     isStartStation="false"
     [stateCtrl]="endStationCtrl"
     errorMessage="Please Select a Station"
@@ -38,4 +38,7 @@
 <div>
   <app-clear-button></app-clear-button>
   <app-search-button></app-search-button>
+</div>
+<div>
+  <app-schedule-table></app-schedule-table>
 </div>
