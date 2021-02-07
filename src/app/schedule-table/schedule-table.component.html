@@ -47,7 +47,8 @@
         columnsToDisplay[3]
       }}</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.destination.destinationStation }}
+        {{ element.destination.destinationStation }} /
+        {{ element.destination.destinationStationTime }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="endStation" class="data">
@@ -55,7 +56,8 @@
         columnsToDisplay[4]
       }}</mat-header-cell>
       <mat-cell *matCellDef="let element">
-        {{ element.endStation.endStation }}
+        {{ element.endStation.endStation }} /
+        {{ element.endStation.endStationTime }}
       </mat-cell>
     </ng-container>
     <ng-container matColumnDef="frequency" class="data">
