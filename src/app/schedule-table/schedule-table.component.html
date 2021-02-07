@@ -14,29 +14,35 @@
   </ng-container> -->
     <ng-container matColumnDef="disclaimer">
       <mat-footer-cell *matFooterCellDef colspan="2">
-        {{ scheduleData.headerText }} {{ scheduleData.directTrains }}
-        {{ scheduleData.totalAvailableTrains }}</mat-footer-cell
-      >
+        <div style="display: flex">
+          <div class="headerText">
+            {{ scheduleData.headerText }}
+          </div>
+          <div class="totalAvailableTrains">
+            {{ scheduleData.totalAvailableTrains }}
+          </div>
+        </div>
+      </mat-footer-cell>
     </ng-container>
-    <ng-container matColumnDef="startStation">
+    <ng-container matColumnDef="startStation" class="data">
       <mat-header-cell *matHeaderCellDef>{{
         columnsToDisplay[0]
       }}</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.startStation }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="arrivalTime">
+    <ng-container matColumnDef="arrivalTime" class="data">
       <mat-header-cell *matHeaderCellDef>{{
         columnsToDisplay[1]
       }}</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.arrivalTime }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="depatureTime">
+    <ng-container matColumnDef="depatureTime" class="data">
       <mat-header-cell *matHeaderCellDef>{{
         columnsToDisplay[2]
       }}</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.depatureTime }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="destination">
+    <ng-container matColumnDef="destination" class="data">
       <mat-header-cell *matHeaderCellDef>{{
         columnsToDisplay[3]
       }}</mat-header-cell>
@@ -44,7 +50,7 @@
         {{ element.destination.destinationStation }}
       </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="endStation">
+    <ng-container matColumnDef="endStation" class="data">
       <mat-header-cell *matHeaderCellDef>{{
         columnsToDisplay[4]
       }}</mat-header-cell>
@@ -52,19 +58,19 @@
         {{ element.endStation.endStation }}
       </mat-cell>
     </ng-container>
-    <ng-container matColumnDef="frequency">
+    <ng-container matColumnDef="frequency" class="data">
       <mat-header-cell *matHeaderCellDef>{{
         columnsToDisplay[5]
       }}</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.frequency }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="name" class="data">
       <mat-header-cell *matHeaderCellDef>{{
         columnsToDisplay[6]
       }}</mat-header-cell>
       <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
     </ng-container>
-    <ng-container matColumnDef="type">
+    <ng-container matColumnDef="type" class="data">
       <mat-header-cell *matHeaderCellDef>{{
         columnsToDisplay[7]
       }}</mat-header-cell>
@@ -82,9 +88,17 @@
             element == expandedElement ? 'expanded' : 'collapsed'
           "
         >
-          <div class="row">
-            Available Classes : {{ element.availableClasses }} Train Ends at :
-            {{ element.trainsEndAt }} Train No : {{ element.trainNo }}
+          <div>
+            <div style="display: flex">
+              <div class="availableClasses">
+                Available Classes : {{ element.availableClasses }}
+              </div>
+              <div class="trainsEndAt">
+                Train Ends at :
+                {{ element.trainsEndAt }}
+              </div>
+              <div class="trainNo">Train No : {{ element.trainNo }}</div>
+            </div>
           </div>
         </div>
       </mat-cell>
@@ -93,7 +107,7 @@
     <mat-header-row *matHeaderRowDef="columns; sticky: true"></mat-header-row>
     <mat-footer-row
       *matFooterRowDef="['disclaimer']; sticky: true"
-      class="example-second-footer-row"
+      class="example-second-footer-row availableClasses"
     ></mat-footer-row>
     <mat-row
       *matRowDef="let element; columns: columns"

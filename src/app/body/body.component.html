@@ -1,57 +1,81 @@
-<div class="center" *ngIf="!stationsService.isLoading; else loading">
-  <div>
-    <app-selection-dropdown
-      labelName="Start Station"
-      [selectionOptions]="stationsData"
-      isStartStation="true"
-      [stateCtrl]="startStationCtrl"
-      [errorMessage]="errorMessage"
-      isRequired="true"
-    ></app-selection-dropdown>
-    <app-selection-dropdown
-      labelName="End Station"
-      [selectionOptions]="stationsData"
-      isStartStation="false"
-      [stateCtrl]="endStationCtrl"
-      [errorMessage]="errorMessage"
-      isRequired="true"
-    ></app-selection-dropdown>
-  </div>
-
-  <div>
-    <app-selection-dropdown
-      labelName="Start Time"
-      [selectionOptions]="timeData"
-      isStartStation=""
-      [stateCtrl]="startTimeCtrl"
-    ></app-selection-dropdown>
-
-    <app-selection-dropdown
-      labelName="End Time"
-      [selectionOptions]="timeData"
-      isStartStation="true"
-      [stateCtrl]="endTimieCtrl"
-    ></app-selection-dropdown>
-  </div>
-  <div>
-    <app-date-pick [stateCtrl]="searchDateCtrl"></app-date-pick>
-  </div>
-  <div>
-    <app-clear-button (clearSchedule)="clearSchedule()"></app-clear-button>
-    <app-search-button (searchAction)="searchTrains()"></app-search-button>
-  </div>
-  <div *ngIf="scheduleService.hasRequestedForSearch">
-    <div *ngIf="isGettingScheduleData; else dataLoaded">
-      <mat-spinner diameter="50"></mat-spinner>
+<div class="container" *ngIf="!stationsService.isLoading; else loading">
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-center">
+      <app-selection-dropdown
+        labelName="Start Station"
+        [selectionOptions]="stationsData"
+        isStartStation="true"
+        [stateCtrl]="startStationCtrl"
+        [errorMessage]="errorMessage"
+        isRequired="true"
+      ></app-selection-dropdown>
     </div>
-    <ng-template #dataLoaded>
-      <app-schedule-table [scheduleData]="trainSchedule"></app-schedule-table>
-    </ng-template>
+    <div class="col-md-6 d-flex justify-content-center">
+      <app-selection-dropdown
+        labelName="End Station"
+        [selectionOptions]="stationsData"
+        isStartStation="false"
+        [stateCtrl]="endStationCtrl"
+        [errorMessage]="errorMessage"
+        isRequired="true"
+      ></app-selection-dropdown>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 d-flex justify-content-center">
+      <app-selection-dropdown
+        labelName="Start Time"
+        [selectionOptions]="timeData"
+        isStartStation=""
+        [stateCtrl]="startTimeCtrl"
+      ></app-selection-dropdown>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center">
+      <app-selection-dropdown
+        labelName="End Time"
+        [selectionOptions]="timeData"
+        isStartStation="true"
+        [stateCtrl]="endTimieCtrl"
+      ></app-selection-dropdown>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center">
+      <app-date-pick [stateCtrl]="searchDateCtrl"></app-date-pick>
+    </div>
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-2 justify-content-center btn-clear-flex">
+      <app-clear-button (clearSchedule)="clearSchedule()"></app-clear-button>
+    </div>
+    <div class="col-4 justify-content-center btn-search-flex">
+      <app-search-button (searchAction)="searchTrains()"></app-search-button>
+    </div>
   </div>
 </div>
 
 <ng-template #loading>
-  <div class="center">
-    <mat-spinner diameter="50"></mat-spinner>
+  <div class="row d-flex justify-content-end">
+    <div class="col-md-6">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
   </div>
 </ng-template>
+
+<div *ngIf="scheduleService.hasRequestedForSearch" style="margin-top: 5%">
+  <div *ngIf="isGettingScheduleData; else dataLoaded">
+    <div class="row d-flex justify-content-end">
+      <div class="col-md-6">
+        <mat-spinner diameter="50"></mat-spinner>
+      </div>
+    </div>
+  </div>
+  <ng-template #dataLoaded>
+    <div class="row d-flex">
+      <div class="col-md-12">
+        <app-schedule-table [scheduleData]="trainSchedule"></app-schedule-table>
+      </div>
+    </div>
+  </ng-template>
+</div>

@@ -6,3 +6,23 @@
 table {
   width: 100%;
 }
+
+.totalAvailableTrains {
+  padding-left: 100vh;
+}
+
+.availableClasses {
+  font-weight: 500;
+}
+
+.data {
+  font-weight: bold;
+}
+
+.trainsEndAt {
+  padding-left: 150px;
+}
+
+.trainNo {
+  padding-left: 925px;
+}

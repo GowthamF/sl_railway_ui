@@ -1,6 +1,7 @@
-/* .center {
-  margin: auto;
-  width: 50%;
-  padding: 10px;
-  text-align: -webkit-center;
-} */
+.btn-clear-flex {
+  flex: 0 0 10.3333% !important;
+}
+
+.btn-search-flex {
+  flex: 0 0 24.3333% !important;
+}
