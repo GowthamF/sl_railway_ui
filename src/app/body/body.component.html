@@ -41,7 +41,12 @@
     <app-search-button (searchAction)="searchTrains()"></app-search-button>
   </div>
   <div *ngIf="scheduleService.hasRequestedForSearch">
-    <app-schedule-table [scheduleData]="trainSchedule"></app-schedule-table>
+    <div *ngIf="isGettingScheduleData; else dataLoaded">
+      <mat-spinner diameter="50"></mat-spinner>
+    </div>
+    <ng-template #dataLoaded>
+      <app-schedule-table [scheduleData]="trainSchedule"></app-schedule-table>
+    </ng-template>
   </div>
 </div>
 

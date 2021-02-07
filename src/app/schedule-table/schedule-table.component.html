@@ -78,15 +78,13 @@
         [attr.colspan]="columnsToDisplay.length"
       >
         <div
-          class="example-element-detail"
           [@detailExpand]="
             element == expandedElement ? 'expanded' : 'collapsed'
           "
         >
-          <div>
-            <div>Available Classes : {{ element.availableClasses }}</div>
-            <div>Train Ends at : {{ element.trainsEndAt }}</div>
-            <div>Train No : {{ element.trainNo }}</div>
+          <div class="row">
+            Available Classes : {{ element.availableClasses }} Train Ends at :
+            {{ element.trainsEndAt }} Train No : {{ element.trainNo }}
           </div>
         </div>
       </mat-cell>
