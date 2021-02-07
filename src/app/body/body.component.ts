@@ -22,6 +22,7 @@ export class BodyComponent implements OnInit {
   searchDateCtrl = new FormControl();
 
   isGettingScheduleData: boolean = true;
+  hasData: boolean = true;
 
   trainSchedule: ScheduleResponse;
 
@@ -92,7 +93,11 @@ export class BodyComponent implements OnInit {
         this.trainSchedule = response;
         // this.trainSchedule.headers
         // console.log(this.trainSchedule.schedules);
-
+        if (this.trainSchedule) {
+          this.hasData = true;
+        } else {
+          this.hasData = false;
+        }
         this.isGettingScheduleData = false;
       });
     } else {

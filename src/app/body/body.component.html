@@ -64,18 +64,25 @@
 </ng-template>
 
 <div *ngIf="scheduleService.hasRequestedForSearch" style="margin-top: 5%">
-  <div *ngIf="isGettingScheduleData; else dataLoaded">
-    <div class="row d-flex justify-content-end">
-      <div class="col-md-6">
-        <mat-spinner diameter="50"></mat-spinner>
+  <div *ngIf="hasData; else noData">
+    <div *ngIf="isGettingScheduleData; else dataLoaded">
+      <div class="row d-flex justify-content-end">
+        <div class="col-md-6">
+          <mat-spinner diameter="50"></mat-spinner>
+        </div>
       </div>
     </div>
+    <ng-template #dataLoaded>
+      <div class="row d-flex">
+        <div class="col-md-12">
+          <app-schedule-table
+            [scheduleData]="trainSchedule"
+          ></app-schedule-table>
+        </div>
+      </div>
+    </ng-template>
   </div>
-  <ng-template #dataLoaded>
-    <div class="row d-flex">
-      <div class="col-md-12">
-        <app-schedule-table [scheduleData]="trainSchedule"></app-schedule-table>
-      </div>
-    </div>
+  <ng-template #noData>
+    <h3>No Data found for this selection</h3>
   </ng-template>
 </div>
