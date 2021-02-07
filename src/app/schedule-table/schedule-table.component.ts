@@ -6,6 +6,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { ScheduleResponse } from '../interfaces/schedule.interface';
 
 @Component({
   selector: 'app-schedule-table',
@@ -16,7 +17,7 @@ import {
       state('expanded', style({ height: '0px', minHeight: '0' })),
       state('expanded', style({ height: '*' })),
       transition(
-        'expanded <=> collapsed',
+        'collapsed <=> expanded',
         animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')
       ),
     ]),
@@ -24,11 +25,19 @@ import {
 })
 export class ScheduleTableComponent implements OnInit {
   @Input()
-  dataSource: [];
-  @Input()
-  columnsToDisplay: String[];
+  scheduleData: ScheduleResponse;
+
   expandedElement: null;
+  columnsToDisplay = [];
+  columns = [];
+  dataSource = [];
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    var columnHeaders = [...this.scheduleData.schedules];
+    this.dataSource = this.scheduleData.schedules;
+    this.columnsToDisplay = this.scheduleData.headers;
+    var firstElement = columnHeaders.shift();
+    this.columns = Object.keys(firstElement).slice(0, 8);
+  }
 }

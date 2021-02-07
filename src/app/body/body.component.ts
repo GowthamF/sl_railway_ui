@@ -75,11 +75,20 @@ export class BodyComponent implements OnInit {
             ? ''
             : this.datePipe.transform(this.searchDateCtrl.value, 'dd/MM/yyyy'),
       };
+
+      // var schedulePost: SchedulePost = {
+      //   selectedLocale: 'en',
+      //   startStationID: 115,
+      //   endStationID: 61,
+      //   startTime: '-1',
+      //   endTime: '-1',
+      //   searchDate: '07/02/2021',
+      // };
       this.scheduleService.hasRequestedForSearch = false;
       this.scheduleService.getSchedule(schedulePost).subscribe((response) => {
         this.trainSchedule = response;
         // this.trainSchedule.headers
-        console.log(this.trainSchedule.schedules);
+        // console.log(this.trainSchedule.schedules);
         this.scheduleService.hasRequestedForSearch = true;
       });
     } else {

@@ -41,10 +41,7 @@
     <app-search-button (searchAction)="searchTrains()"></app-search-button>
   </div>
   <div *ngIf="scheduleService.hasRequestedForSearch">
-    <app-schedule-table
-      [columnsToDisplay]="trainSchedule.headers"
-      [dataSource]="trainSchedule.schedules"
-    ></app-schedule-table>
+    <app-schedule-table [scheduleData]="trainSchedule"></app-schedule-table>
   </div>
 </div>
 
